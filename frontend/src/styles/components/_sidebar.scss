@@ -1,0 +1,71 @@
+@use "../base/variabels" as var;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  background: var.$blackColor;
+  min-height: 100vh;
+  justify-content: space-between;
+  img {
+    width: 140px;
+    display: block;
+    margin: 40px auto;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    a {
+      color: var.$gray3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      transition-duration: 0.2s;
+      &.active {
+        color: white;
+        animation: fill-background 0.5s forwards;
+      }
+      &:not(.active):hover {
+        background-color: rgba($color: var.$primaryColor, $alpha: 0.4);
+        color: white;
+      }
+      svg {
+        font-size: 20px;
+      }
+    }
+  }
+  .logout {
+    color: var.$gray3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background: #222;
+    margin-bottom: 50px;
+    transition-duration: 0.3s;
+    &:hover {
+      background: #333;
+    }
+    &:hover svg {
+      margin-right: 3px;
+    }
+    svg {
+      font-size: 20px;
+      transition-duration: 0.3s;
+    }
+  }
+}
+
+@keyframes fill-background {
+  from {
+    background-color: rgba($color: var.$primaryColor, $alpha: 0.4);
+  }
+  to {
+    background-color: var.$primaryColor;
+  }
+}

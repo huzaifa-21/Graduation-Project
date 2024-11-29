@@ -1,0 +1,77 @@
+@use "./variabels" as var;
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// @use "../base/variabels" as var;
+body {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  background-color: var.$mainBg;
+}
+
+*:focus {
+  outline: none;
+}
+
+.input-holder {
+  .input-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  .main-input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid var.$gray4;
+    background: var.$mainBg;
+    font-size: 14px;
+    &:focus {
+      border-color: var.$gray1;
+    }
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.or {
+  position: relative;
+  margin: 0 30px;
+  height: 1px;
+  background-color: var.$gray4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  &::before {
+    content: "or continue with google";
+    position: absolute;
+    background: var.$mainBg;
+    padding: 0 10px;
+    text-wrap: nowrap;
+    color: var.$gray3;
+  }
+}
+
+.sign-with-google {
+  background-color: var.$gray5;
+  display: flex  ;
+  align-items: center ;
+  justify-content: center ;
+  gap: 10px ;
+  width: 100%;
+  border-radius: 5px;
+  color: var.$gray1;
+  img {
+    width: 30px !important;
+    margin: 0 !important;
+  }
+}

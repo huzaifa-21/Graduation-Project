@@ -6,7 +6,7 @@ const BudgetSchema = mongoose.Schema({
   expenses: [
     {
       category: String,
-      amount: Number,
+      description: [{name:String,amount:Number}],
       date: { type: Date, default: Date.now },
     },
   ],

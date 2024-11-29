@@ -1,0 +1,37 @@
+@use "../base/variabels" as var;
+.signup {
+  padding-top: 100px;
+  min-height: 100vh;
+  .container {
+    max-width: 400px;
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 250px;
+      margin-bottom: 30px;
+    }
+    h5.create-head {
+      width: fit-content;
+      margin: 5px auto;
+      font-weight: bold;
+    }
+    .sign-form {
+      > div {
+        margin-top: 20px;
+      }
+    }
+    p {
+      margin-top: 30px;
+      color: var.$gray3;
+      font-size: 14px;
+    }
+    .or {
+      width: 90%;
+      margin: 35px auto;
+    }
+    a {
+      color: var.$primaryColor;
+      font-weight: 600;
+    }
+  }
+}

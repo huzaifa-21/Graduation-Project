@@ -1,0 +1,74 @@
+@use "../base/variabels" as var;
+
+.home {
+  background: url("/family2.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: white;
+  position: relative;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+  }
+
+  .hero {
+    position: relative;
+    text-align: center;
+    padding-top: 150px;
+    h1 {
+      font-weight: bold;
+      span {
+        background: linear-gradient(80deg, var.$primaryColor, var.$green);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+    p {
+      color: var.$gray4;
+    }
+    button {
+      border-radius: 20px;
+      width: 150px;
+      margin: 20px 0 70px;
+      &:hover {
+        transition-duration: .3s;
+        transform: scale(1.1) !important;
+      }
+    }
+  }
+  .features {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    .feature {
+      border: 0.3px solid var.$gray1;
+      border-radius: 6px;
+      background-color: rgba($color: var.$gray2, $alpha: 0.5);
+      backdrop-filter: blur(5px);
+      overflow: hidden;
+      height: 400px;
+      padding-bottom: 20px;
+      img {
+        width: 280px;
+        height: 300px;
+        margin-bottom: 10px;
+        position: relative;
+      }
+      h3 {
+        padding: 0px 10px;
+        margin-bottom: 0px;
+        color: var.$gray6;
+      }
+      p {
+        padding: 3px 10px;
+        color: var.$gray4;
+      }
+    }
+  }
+}

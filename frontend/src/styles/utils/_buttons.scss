@@ -1,0 +1,11 @@
+@use "../base/variabels" as var;
+
+.main-btn {
+  padding: 10px 15px;
+  border: none;
+  background-color: var.$primaryColor;
+  color: var.$whiteColor;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 5px;
+}

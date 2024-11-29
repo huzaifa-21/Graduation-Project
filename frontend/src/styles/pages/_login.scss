@@ -1,0 +1,39 @@
+@use "../base/variabels" as var;
+
+.login {
+  padding-top: 100px;
+  min-height: 100vh;
+  .container {
+    max-width: 400px;
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 250px;
+      margin-bottom: 50px;
+    }
+    .login-form {
+      div {
+        margin-bottom: 20px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 40px;
+      }
+    }
+    .or {
+      width: 90%;
+      margin: 40px auto;
+    }
+    p {
+      margin-top: 50px;
+      text-align: center;
+      color: var.$gray3;
+      font-size: 14px;
+    }
+    a {
+      color: var.$primaryColor;
+      font-weight: 600;
+    }
+  }
+}
