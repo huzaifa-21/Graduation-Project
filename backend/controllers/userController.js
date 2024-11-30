@@ -2,47 +2,83 @@ import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 
 const addUser = async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { name, email, password } = req.body;
 
-  const salt = await bcrypt.genSalt(10);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-  const hashedPassowrd = await bcrypt.hash(password, salt);
+    const existingUser = await User.findOne({ email });
 
-  const newUser = new User({
-    email,
-    password: hashedPassowrd,
-  });
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ success: false, message: "User already exists" });
+    }
 
-  await newUser.save();
+    const newUser = new User({
+      name,
+      email,
+      password: hashedPassword,
+    });
 
-  res.json({ success: true, data: "user added successfully" });
+    await newUser.save();
+
+    res.status(201).json({ success: true, message: "User added successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 const getUser = async (req, res) => {
-  const { id } = req.body;
-  const user = await User.findById(id);
+  try {
+    const { id } = req.body;
+    const user = await User.findById(id);
 
-  if (!user) {
-    return res.json({ success: false, data: "user not found" });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+
+    res.status(200).json({ success: true, data: user });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
+};
 
-  res.json({ success: true, data: user });
+const getUsers = async (req, res) => {
+  try {
+    const users = await User.find({}, { password: false, __v: false });
+    res.status(200).json({ success: true, data: users });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 const login = async (req, res) => {
-  const { password, email } = req.body;
-  const user = await User.findOne({ email });
-  const hashedPassword = await bcrypt.compare(password, user.password);
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
 
-  if (!user) {
-    return res.json({ success: false, data: "User is not registerd" });
+    if (!user) {
+      return res
+        .status(400)
+        .json({ success: false, message: "User is not registered" });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Wrong password" });
+    }
+
+    res.status(200).json({ success: true, data: user });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
   }
-
-  if (!hashedPassword) {
-    return res.json({ success: false, data: "Wrong password" });
-  }
-
-  res.json({ success: true, data: user });
 };
 
-export { addUser, getUser, login };
+export { addUser, getUser, getUsers, login };

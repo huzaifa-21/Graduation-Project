@@ -5,16 +5,14 @@ import Overview from "./Overview";
 import Balances from "./Balances";
 import Goals from "./Goals";
 import Expenses from "./Expenses";
+import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
       <Sidebar />
       <main>
-        <header className="dashboard-header">
-          <h2>Welcome Back, [User Name]</h2>
-          <p>Your financial health at a glance.</p>
-        </header>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Overview />} />
           <Route path="balances" element={<Balances />} />

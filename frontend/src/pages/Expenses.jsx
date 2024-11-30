@@ -1,5 +1,6 @@
 import React from "react";
 import {motion} from "framer-motion"
+import { Container } from "react-bootstrap";
 const Expenses = () => {
   return (
     <motion.div
@@ -7,7 +8,7 @@ const Expenses = () => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      Expenses
+      <Container>Expenses</Container>
     </motion.div>
   );
 };

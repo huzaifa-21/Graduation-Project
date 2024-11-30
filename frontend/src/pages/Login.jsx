@@ -29,13 +29,13 @@ const Login = () => {
           <Input
             type={"email"}
             label={"Email Address"}
-            placeholder={"huzaifasalah9@gmail.com"}
+            placeholder={"hello@example.com"}
             id={"email"}
           />
           <Input
             type={"password"}
             label={"Password"}
-            placeholder={""}
+            placeholder={"strong password"}
             id={"password"}
           />
           <input className="main-btn" type="submit" value="Login" />

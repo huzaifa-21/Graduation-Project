@@ -1,5 +1,6 @@
 import React from "react";
 import {motion} from "framer-motion"
+import { Container } from "react-bootstrap";
 const Goals = () => {
   return (
     <motion.div
@@ -7,7 +8,7 @@ const Goals = () => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      Goals
+      <Container>Goals</Container>
     </motion.div>
   );
 };

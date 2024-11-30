@@ -1,0 +1,52 @@
+@use "../base/variabels" as var;
+.navbar {
+  border-bottom: 1px solid var.$gray5;
+  padding: 10px 0;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    h2 {
+      font-size:23px;
+      font-weight: bold;
+    }
+    span {
+      font-size: 14px;
+      color: var.$gray2;
+      svg {
+        margin-right: 10px;
+      }
+      flex: 1;
+    }
+    .notification-search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      .notification {
+        svg {
+          color: var.$gray2;
+          font-size: 20px;
+        }
+      }
+      .search {
+        position: relative;
+        input {
+          padding: 8px 20px;
+          font-size: 14px;
+          width: 300px;
+          border: none;
+          border-radius: 9px;
+          box-shadow: 0 26px 26px 0 rgba($color: #6A163A, $alpha: 0.04);
+        }
+        svg {
+          position: absolute;
+          right: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+}
