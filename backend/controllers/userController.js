@@ -1,7 +1,8 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
+import { generateToken } from "../utils/jwtGenrator.js";
 
-const addUser = async (req, res) => {
+const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -24,7 +25,18 @@ const addUser = async (req, res) => {
 
     await newUser.save();
 
-    res.status(201).json({ success: true, message: "User added successfully" });
+    const user = await User.findOne({ email });
+
+    const token = generateToken({ email: user.emial, id: user._id });
+
+    res
+      .status(201)
+      .json({
+        success: true,
+        data: { email: user.email, id: user._id, name: user.name },
+        message: "User added successfully",
+        token,
+      });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
@@ -32,17 +44,20 @@ const addUser = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    const { id } = req.body;
+    const { id } = req.user;
     const user = await User.findById(id);
-
     if (!user) {
       return res
         .status(404)
         .json({ success: false, message: "User not found" });
     }
 
-    res.status(200).json({ success: true, data: user });
+    res.status(200).json({
+      success: true,
+      data: { id: user._id, name: user.name },
+    });
   } catch (error) {
+    console.log("error", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
@@ -55,10 +70,9 @@ const getUsers = async (req, res) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
-
 const login = async (req, res) => {
+  const { email, password } = req.body;
   try {
-    const { email, password } = req.body;
     const user = await User.findOne({ email });
 
     if (!user) {
@@ -68,17 +82,24 @@ const login = async (req, res) => {
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
-
     if (!isPasswordValid) {
       return res
         .status(401)
         .json({ success: false, message: "Wrong password" });
     }
 
-    res.status(200).json({ success: true, data: user });
+    const token = generateToken({ email: user.email, id: user._id });
+
+    res.status(200).json({
+      success: true,
+      data: { email: user.email, id: user._id, name: user.name },
+      message:"Logged in successfully",
+      token,
+    });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-export { addUser, getUser, getUsers, login };
+export { registerUser, getUser, getUsers, login };

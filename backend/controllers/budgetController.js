@@ -1,6 +1,7 @@
 import Budget from "../models/budgetModel.js";
 
 const addBudget = async (req, res) => {
+  // const {id:userId} = req.user
   const { userId, income, expenses, savingsGoal, currentTotal } = req.body;
 
   if (!userId || !income || !savingsGoal) {
@@ -43,27 +44,29 @@ const getAllBudgets = async (req, res) => {
   }
 };
 
-const getBudget = async (req, res) => {
-  const { id } = req.params;
-
+const getUserBudget = async (req, res) => {
   try {
-    const budget = await Budget.findById(id).populate(
+    const { id } = req.user;
+    // Find the budget for the specific user
+    const budget = await Budget.find({ userId: id }).populate(
       "userId",
-      "-password -__v"
+      "-__v -password"
     );
+
     if (!budget) {
       return res
         .status(404)
-        .json({ success: false, message: "No budget found" });
+        .json({ success: false, message: "Budget not found for the user" });
     }
-    res.json({
+
+    res.status(200).json({
       success: true,
       data: budget,
-      message: "Budget retrieved successfully",
+      message: "User's budget retrieved successfully",
     });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-export { addBudget, getBudget, getAllBudgets };
+export { addBudget, getAllBudgets, getUserBudget };

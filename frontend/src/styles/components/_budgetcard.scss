@@ -1,0 +1,66 @@
+@use "../base/variabels" as var;
+  .budget-box,
+  .budget-option {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    min-height: 200px;
+    max-height: 200px;
+    margin-bottom: 30px;
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var.$gray6;
+      padding-bottom: 10px;
+      h5 {
+        font-weight: 600;
+        margin: 0;
+        color: var.$gray3;
+        font-size: 17px;
+      }
+      a,
+      span {
+        font-size: 14px;
+        color: var.$secondaryColor;
+      }
+    }
+  }
+
+  .budget-body {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    .amount,.saving {
+      .saving-number,.amount-number {
+        font-weight: bold;
+        font-size:20px;
+      }
+      .saving-label,.amount-label {
+        display: block;
+        font-size: 13px;
+        color: var.$gray3;
+      }
+    }
+  }
+
+  .budget-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+    span {
+      color: var.$primaryColor;
+      cursor: pointer;
+    }
+    a {
+      width: 35%;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      padding: 8px;
+      svg {
+        margin-left: 5px;
+      }
+    }
+  }

@@ -1,9 +1,11 @@
 @use "./base/variabels";
 @use "./utils/buttons";
+@use "./utils/spinner";
 @use "./base/global";
 @use "./components/sidebar";
 @use "./components/navbar";
 @use "./components/card";
+@use "./components/budgetcard";
 @use "./pages/home";
 @use "./pages/dashboard";
 @use "./pages/overview";

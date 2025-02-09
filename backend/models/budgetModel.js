@@ -7,12 +7,20 @@ const BudgetSchema = mongoose.Schema({
   expenses: [
     {
       category: String,
-      description: [{ name: String, amount: Number, _id: false }],
+      description: [
+        {
+          name: String,
+          amount: Number,
+          date: { type: Date, default: Date.now },
+          _id: false,
+        },
+      ],
       date: { type: Date, default: Date.now },
       _id: false,
     },
   ],
   currentTotal: { type: Number, default: 0 },
+  date: { type: Date, default: Date.now },
   savingsGoal: Number,
 });
 

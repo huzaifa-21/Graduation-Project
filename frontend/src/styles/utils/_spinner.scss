@@ -1,0 +1,22 @@
+@use "../base/variabels" as var;
+.spinner {
+  width: 100%;
+  height: calc(100% - 58px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 5px solid var.$gray4;
+    border-bottom-color: var.$gray3;
+    animation: spinner 0.5s infinite linear;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

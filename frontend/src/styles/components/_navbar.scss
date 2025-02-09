@@ -1,7 +1,8 @@
 @use "../base/variabels" as var;
 .navbar {
   border-bottom: 1px solid var.$gray5;
-  padding: 10px 0;
+  padding: 10px 20px;
+  
   .container {
     display: flex;
     justify-content: space-between;
@@ -38,7 +39,7 @@
           width: 300px;
           border: none;
           border-radius: 9px;
-          box-shadow: 0 26px 26px 0 rgba($color: #6A163A, $alpha: 0.04);
+          box-shadow: 0 5px 20px 0 rgba($color: #6A163A, $alpha: 0.06);
         }
         svg {
           position: absolute;

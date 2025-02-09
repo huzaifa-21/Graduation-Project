@@ -1,0 +1,47 @@
+@use "../base/variabels" as var;
+
+.overview {
+  padding: 0 20px;
+  .container {
+    padding-top: 20px;
+    .box-header {
+      color: var.$gray2;
+    }
+    section {
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      min-height: 169px;
+      max-height: 169px;
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var.$gray6;
+        padding-bottom: 10px;
+        h5 {
+          font-weight: bold;
+          margin: 0;
+        }
+        a,
+        span {
+          font-size: 14px;
+          color: var.$secondaryColor;
+        }
+      }
+      .category-box {
+        padding: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .category-name {
+          color: var.$gray2;
+        }
+        .category-total {
+          font-weight: bold;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}

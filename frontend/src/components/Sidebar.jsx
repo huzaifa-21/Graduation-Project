@@ -45,7 +45,7 @@ const Sidebar = () => {
           Goals
         </NavLink>
       </nav>
-      <Link className="logout" to="/account/login">
+      <Link className="logout" to="/account/login" onClick={()=>localStorage.clear()}>
         <FontAwesomeIcon icon={faArrowRightToBracket} />
         Logout
       </Link>
